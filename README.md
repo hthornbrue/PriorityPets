@@ -2,6 +2,10 @@ Install this stuff
 
 Back-End: npm install express mongodb mongoose
 
+# Date Picker
+
+npm install moment react-datepicker
+
 ---
 
 # Getting Started with Create React App

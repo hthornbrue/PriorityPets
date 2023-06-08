@@ -81,7 +81,7 @@ function App() {
         {tasks.map((task, index) => (
           <div key={index}>
             <h2>{task.title}</h2>
-            <p>{task.description}</p>
+            {task.description && <p>{task.description}</p>}
             <p>Priority: {task.priority}</p>
             <p>
               Due Date:{" "}
