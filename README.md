@@ -2,9 +2,20 @@ Install this stuff
 
 Back-End: npm install express mongodb mongoose
 
+
+<!-- Install for Front End -->
+
 # Date Picker
 
 npm install moment react-datepicker
+
+# Date and Time picker
+
+npm install react-datetime-picker
+
+# Bootstrap
+
+npm install bootstrap
 
 ---
 
