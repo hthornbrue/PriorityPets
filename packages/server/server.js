@@ -4,6 +4,18 @@ import tasksRouter from ".routes/tasks";
 import petsRouter from "./routes/pets";
 import express from "express";
 
+
+// Database
+require("dotenv").config()
+const mongoose = require('mongoose')
+mongoose.connect(process.env.MONGO_URI,{ userNewUrlParser:
+true})
+.then(()=> console.log ('DB connected!'))
+.catch(err=> console.error(err))
+
+
+
+
 const app = express();
 
 //Replace 'mongodb' url with connection information
