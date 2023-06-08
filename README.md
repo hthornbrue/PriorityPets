@@ -1,3 +1,9 @@
+Install this stuff
+
+Back-End: npm install express mongodb mongoose
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
