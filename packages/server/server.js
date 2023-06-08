@@ -13,14 +13,8 @@ true})
 .then(()=> console.log ('DB connected!'))
 .catch(err=> console.error(err))
 
-
-
-
 const app = express();
-
 //Replace 'mongodb' url with connection information
-mongoose.connect("mongodb://localhost/mydatabase", { useNewUrlParser: true, useUnifiedTopology: true });
-
 app.use("/users", usersRouter);
 app.use("/tasks", tasksRouter);
 app.use("/pets", petsRouter);
