@@ -1,0 +1,69 @@
+li.task {
+  min-width: 350px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  margin: 5px auto;
+  border-radius: 22px;
+}
+
+.title {
+  width: 50%;
+  font-size: larger;
+  font-weight: bold;
+  text-align: center;
+}
+
+.description {
+  width: 100%;
+  text-align: left;
+  font-weight: bold;
+  padding-left: 10%;
+}
+
+div.holder {
+  width: 400px;
+}
+
+ol:hover {
+  border-radius: 22px;
+  background-color: rgb(16, 16, 24);
+  color: rgb(24, 27, 33) !important;
+}
+
+.main {
+  display: none;
+}
+
+.completed {
+  transform: scale(1.5);
+}
+
+ol:hover .main {
+  display: contents;
+  transition-timing-function: ease-in-out;
+}
+
+.task {
+  max-width: 500px;
+}
+
+ol {
+  max-width: 500px;
+  margin: -2px;
+}
+
+.modalButton {
+  transform: scale(1.4);
+  margin-left: 50px;
+  color: black;
+  background-color: lightgray;
+  font-weight: bold;
+}
+
+.listDiv {
+  display: flex;
+  justify-content: center;
+}
