@@ -1,5 +1,5 @@
 li.task {
-  min-width: 350px;
+  min-width: 500px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -11,9 +11,10 @@ li.task {
 
 .title {
   width: 50%;
-  font-size: larger;
+  font-size: x-large;
   font-weight: bold;
   text-align: center;
+  margin-left: 100px;
 }
 
 .description {
@@ -24,12 +25,12 @@ li.task {
 }
 
 div.holder {
-  width: 400px;
+  width: 600px;
 }
 
 ol:hover {
   border-radius: 22px;
-  background-color: rgb(16, 16, 24);
+  background-color: rgb(11, 11, 18);
   color: rgb(24, 27, 33) !important;
 }
 
@@ -39,6 +40,7 @@ ol:hover {
 
 .completed {
   transform: scale(1.5);
+  margin-left: 10px;
 }
 
 ol:hover .main {
@@ -51,13 +53,15 @@ ol:hover .main {
 }
 
 ol {
-  max-width: 500px;
-  margin: -2px;
+  width: 500px;
+  margin-bottom: -2px;
+  margin-left: 15px;
 }
 
 .modalButton {
   transform: scale(1.4);
-  margin-left: 50px;
+  margin-left: 20px;
+  margin-bottom: 30px;
   color: black;
   background-color: lightgray;
   font-weight: bold;
@@ -66,4 +70,42 @@ ol {
 .listDiv {
   display: flex;
   justify-content: center;
+}
+
+.editButton {
+  background-color: dimgrey;
+  margin-left: 30px;
+}
+
+.datePicker {
+  max-width: 300px;
+  margin-left: 175px;
+}
+
+.dueDateSpan {
+  color: white;
+  position: relative;
+  top: 35px;
+  left: 50px;
+  font-weight: bold;
+  font-size: large;
+}
+
+.para {
+  font-weight: bold;
+}
+
+.div-card2 {
+  border: 1px white solid;
+  border-radius: 15px;
+  max-width: 600px;
+  max-height: 180vh;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+
+  /* margin-left: 450px;
+  margin-top: 40px; */
 }
