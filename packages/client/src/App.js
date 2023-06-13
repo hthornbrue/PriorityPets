@@ -3,7 +3,6 @@ import moment from "moment";
 import DateTimePicker from "react-datetime-picker";
 import "react-datetime-picker/dist/DateTimePicker.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 import TaskPage from "./pages/TaskPage";
 
