@@ -1,6 +1,6 @@
-const express = require("express");
+import express from "express";
 
-const { Task } = require("../models");
+import { Task } from "../models";
 
 const router = express.Router();
 

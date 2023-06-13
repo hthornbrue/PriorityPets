@@ -1,12 +1,10 @@
-const express = require("express");
-const usersRouter = require("./routes/users");
-const tasksRouter = require("./routes/tasks");
-const petsRouter = require("./routes/pets");
-const mongoose = require("mongoose");
-require("dotenv").config();
+import express from "express";
+import router from "./routes/index.js";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 
 // Database
-require("dotenv").config();
+dotenv.config();
 mongoose
   .connect(process.env.MONGO_URI, { useNewUrlParser: true })
   .then(() => console.log("DB connected!"))
@@ -14,9 +12,7 @@ mongoose
 
 const app = express();
 //Replace 'mongodb' url with connection information
-app.use("/users", usersRouter);
-app.use("/tasks", tasksRouter);
-app.use("/pets", petsRouter);
+//app.use("/", router);
 
 const port = 3001;
 app.listen(port, () => {

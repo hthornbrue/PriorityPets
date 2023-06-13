@@ -2,7 +2,6 @@ import express from "express";
 import bcrypt from "bcryptjs";
 import { User, Task, Pet } from "../models";
 
-const express = require("express");
 const router = express.Router();
 
 router.get("/user/:username", async (request, response) => {
@@ -67,4 +66,4 @@ router.post("/user", async (request, response) => {
   }
 });
 
-module.exports = router;
+export default router;
