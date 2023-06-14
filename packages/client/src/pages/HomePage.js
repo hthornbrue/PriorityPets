@@ -1,5 +1,7 @@
 import React from "react";
 import "./HomePage.css";
+import "./TaskPage.js";
+import { Link } from "react-router-dom";
 function HomePage() {
   console.log("bad");
 
@@ -9,8 +11,8 @@ function HomePage() {
   }
 
   return (
-    <div>
-      <img src="x2/Cat_Down@2x.png" alt="cat" width="200px" height="200px" />
+    <div className="home-page">
+        <div className="parent">
       <svg
         id="logo"
         width="662"
@@ -101,7 +103,24 @@ function HomePage() {
           stroke="white"
           strokeWidth="3"
         />
+        
       </svg>
+      <img //Moved this here so I can postioion it relaitive to the logo
+        className="cat-image"
+        src="x2/Cat_Down@2x.png"
+        alt="cat"
+        width="200px"
+        height="200px"
+      />
+      </div>
+      <Link to="/TaskPage">
+        <button className="button-33" role="button">
+          Log In
+        </button>
+      </Link>
+      <Link to = "/SignUp">
+        <div className="newUser">Sign up</div>
+      </Link>
     </div>
   );
 }

@@ -2,14 +2,25 @@ body {
   height: 100vh;
   width: 100vw;
   background-color: green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.parent{
+  position: relative;
 }
 
 #logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   animation: fill 0.5s ease forwards 5s;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+#logo path {
+  stroke: white;
 }
 
 #logo path:nth-child(2) {
@@ -89,11 +100,92 @@ body {
     fill: transparent;
   }
   to {
-    fill: rgb(254, 0, 0);
+    fill: rgb(151, 32, 32);
   }
 }
 
-img {
+.cat-image {
   position: absolute;
-  bottom: 400px;
+  top: -95%;
+  left: 50%;
+  margin-bottom: 2rem;
+  max-width: 80%;
+}
+
+.cat-image:hover{
+  animation: jiggle 0.5s infinite;
+}
+
+
+.button-33 {
+  display: block;
+  background-color: #c2fbd7;
+  border-radius: 100px;
+  color: green;
+  cursor: pointer;
+  font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+  padding: 1.5rem 3rem;
+  text-align: center;
+  text-decoration: none;
+  border: 0;
+  font-size: 1.6rem;
+  user-select: none;
+  -webkit-user-select: none;
+  margin-top: auto;
+  margin-left: 35%;
+}
+
+.button-33:hover {
+  animation: jiggle 0.5s infinite;
+}
+
+@keyframes jiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform:rotate(0deg);
+  }
+}
+
+.newUser{
+  margin-top: auto;
+  margin-left: 43%;
+}
+
+@media (max-width: 600px) {
+  .cat-image {
+    top: -95%;
+  }
+
+  .button-33 {
+    margin-left: 10%;
+  }
+
+  .newUser {
+    margin-left: 20%;
+  }
+}
+
+@media (max-width: 480px) {
+  .cat-image {
+    top: 5%;
+  }
+
+  .button-33 {
+    margin-left: 5%;
+  }
+
+  .newUser {
+    margin-left: 15%;
+  }
 }

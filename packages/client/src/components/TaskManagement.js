@@ -17,6 +17,15 @@ function TaskManagement() {
   const [show, setShow] = useState(false);
   const [edit, setEdit] = useState(false);
 
+  // Edit modal state
+  const [editIndex, setEditIndex] = useState(null);
+  const [editTitle, setEditTitle] = useState("");
+  const [editDescription, setEditDescription] = useState("");
+  const [editPriority, setEditPriority] = useState("");
+  const [editDueDate, setEditDueDate] = useState(null);
+  const [editReminder, setEditReminder] = useState(new Date());
+  const [showEditModal, setShowEditModal] = useState(false);
+
   const openModal = (e) => {
     e.preventDefault();
     setShow(true);
@@ -54,8 +63,41 @@ function TaskManagement() {
 
   const handleCompleteTask = (index) => {
     const updatedTasks = [...tasks];
-    updatedTasks[index].completed = true;
+    updatedTasks[index].completed = !updatedTasks[index].completed; // Toggle the completed value back and forth
     setTasks(updatedTasks);
+  };
+
+  // Edit task
+  const handleEditTask = () => {
+    const updatedTasks = [...tasks];
+    const editedTask = {
+      ...updatedTasks[editIndex],
+      title: editTitle,
+      description: editDescription,
+      priority: editPriority,
+      dueDate: editDueDate,
+      reminder: editReminder,
+    };
+    updatedTasks[editIndex] = editedTask;
+    setTasks(updatedTasks);
+    setEditIndex(null);
+    setShowEditModal(false);
+    setEditTitle("");
+    setEditDescription("");
+    setEditPriority("");
+    setEditDueDate(null);
+    setEditReminder(new Date());
+  };
+
+  const openEditModal = (index) => {
+    const task = tasks[index];
+    setEditIndex(index);
+    setEditTitle(task.title);
+    setEditDescription(task.description);
+    setEditPriority(task.priority);
+    setEditDueDate(task.dueDate);
+    setEditReminder(task.reminder);
+    setShowEditModal(true);
   };
 
   useEffect(() => {
@@ -151,11 +193,11 @@ function TaskManagement() {
                 className="task"
                 style={{
                   backgroundColor: bgColor[task.priority],
-                  textDecoration: task.completed ? "line-through" : "none",
                 }}
               >
                 <div className="holder">
-                  {!task.completed && (
+                  {
+                    //removed the code that crosses out the check box
                     <input
                       type="checkbox"
                       name="completed"
@@ -163,7 +205,7 @@ function TaskManagement() {
                       checked={task.completed}
                       onChange={() => handleCompleteTask(index)}
                     />
-                  )}
+                  }
                   <span
                     style={{
                       fontSize: "12px",
@@ -173,13 +215,21 @@ function TaskManagement() {
                   >
                     Complete
                   </span>
-                  <h2 className="title">{task.title}</h2>
+                  <h2
+                    className="title"
+                    style={{
+                      textDecoration: task.completed ? "line-through" : "none",
+                      color: task.completed ? "gray" : "black", // completed changes colors so people can tell
+                    }}
+                  >
+                    {task.title}
+                  </h2>
                   {task.description && (
                     <div className="description main">{task.description}</div>
                   )}
                   <br></br>
                   <div className="main">
-                    {/* <span className="priority">Priority:  </span> */}
+                    <span className="priority">Priority: </span>
                     <br></br>
                     <span className="para">
                       Due:{" "}
@@ -196,10 +246,82 @@ function TaskManagement() {
                     </span>
                     <Button
                       className="editButton"
-                      onClick={(e) => setEdit(true)}
+                      onClick={() => openEditModal(index)} 
                     >
                       Edit
                     </Button>
+                    
+                    <Modal //edit task modal 
+                      className="modal"
+                      show={showEditModal}
+                      onHide={() => setShowEditModal(false)}
+                    >
+                      <div
+                        className="container mt-5"
+                        style={{
+                          backgroundColor: "darkgreen",
+                          borderRadius: "20px",
+                          marginBottom: "30px",
+                        }}
+                      >
+                        <h1 className="mb-4" style={{ color: "white" }}>
+                          Edit Task
+                        </h1>
+                        <div className="mb-3">
+                          <input
+                            type="text"
+                            className="form-control mb-2"
+                            placeholder="Title"
+                            value={editTitle}
+                            onChange={(e) => setEditTitle(e.target.value)}
+                          />
+                          <textarea
+                            className="form-control mb-2"
+                            placeholder="Description"
+                            value={editDescription}
+                            onChange={(e) => setEditDescription(e.target.value)}
+                          />
+                          <select
+                            className="form-control mb-2"
+                            name="Priority"
+                            value={editPriority}
+                            onChange={(e) => setEditPriority(e.target.value)}
+                          >
+                            <option value="">Priority</option>
+                            <option value={0}>Low</option>
+                            <option value={1}>Medium</option>
+                            <option value={2}>High</option>
+                          </select>
+                          <span className="dueDateSpan">Set Due Date</span>
+                          <DateTimePicker
+                            className="form-control mb-2 datePicker"
+                            value={editDueDate}
+                            onChange={(date) => setEditDueDate(date)}
+                            placeholder="Due Date"
+                          />
+                          <span className="dueDateSpan">Set Reminder</span>
+                          <DateTimePicker
+                            className="form-control mb-2 datePicker"
+                            value={editReminder}
+                            onChange={(date) => setEditReminder(date)}
+                            placeholder="Reminder"
+                          />
+                          <Button
+                            className="float-right mt-3"
+                            onClick={handleEditTask}
+                          >
+                            Save Changes
+                          </Button>
+                          <Button
+                            className="float-right mt-3"
+                            style={{ marginLeft: "20px" }}
+                            onClick={() => setShowEditModal(false)}
+                          >
+                            Cancel
+                          </Button>
+                        </div>
+                      </div>
+                    </Modal>
 
                     <Button
                       className="btn btn-danger deleteButtonTask"
