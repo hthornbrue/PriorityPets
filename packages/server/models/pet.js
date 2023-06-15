@@ -22,6 +22,14 @@ const petSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  lifespan: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const Pet = mongoose.model("Pet", petSchema);
