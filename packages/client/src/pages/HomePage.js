@@ -3,15 +3,20 @@ import "./HomePage.css";
 import "./TaskPage.js";
 import { Link } from "react-router-dom";
 import Login from "../components/login";
+import Signup from "../components/signup";
 import { Button } from "react-bootstrap";
 
 function HomePage() {
-  const [showModal, setShowModal] = useState(false);
+  const [showLoginModal, setLoginShowModal] = useState(false);
+  const [showSignupModal, setSignupShowModal] = useState(false);
 
   console.log(window.location);
 
-  const handleCloseModal = () => setShowModal(false);
-  const handleOpenModal = () => setShowModal(true);
+  const handleOpenLoginModal = () => setLoginShowModal(true);
+  const handleCloseLoginModal = () => setLoginShowModal(false);
+
+  const handleOpenSignupModal = () => setSignupShowModal(true);
+  const handleCloseSignupModal = () => setSignupShowModal(false);
 
   console.log("bad");
 
@@ -107,13 +112,14 @@ function HomePage() {
         Log In
   </button>
       {/*</Link>*/}
-      <Button className="button-33" variant="primary" onClick={handleOpenModal}>
+      <Button className="button-33" variant="primary" onClick={handleOpenLoginModal}>
         Login
       </Button>
-      <Login showModal={showModal} handleCloseModal={handleCloseModal} />
-      <Link to="/SignUp">
-        <div className="newUser">Sign up</div>
-      </Link>
+      <Login showModal={showLoginModal} handleCloseModal={handleCloseLoginModal} />
+      <Button className="button-33" variant="primary" onClick={handleOpenSignupModal}>
+        Signup
+      </Button>
+      <Signup showModal={showSignupModal} handleCloseModal={handleCloseSignupModal} />
     </div>
   );
 }
