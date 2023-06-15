@@ -3,7 +3,7 @@ const { Pet } = require("../models");
 
 const router = express.Router();
 
-router.get("/pet/:id", async (request, response) => {
+router.get("/:id", async (request, response) => {
   const id = request.params.id;
 
   try {
@@ -19,7 +19,7 @@ router.get("/pet/:id", async (request, response) => {
   }
 });
 
-router.post("/pet/:id", async (request, response) => {
+router.post("/:id", async (request, response) => {
   const id = request.params.id;
   const { name, appearance, hungerLevel, healthLevel } = request.body;
 

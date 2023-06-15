@@ -4,7 +4,7 @@ import { Task } from "../models";
 
 const router = express.Router();
 
-router.get("/tasks", async (request, response) => {
+router.get("/", async (request, response) => {
   try {
     const tasks = await Task.find().exec();
     response.json(tasks);
@@ -13,7 +13,7 @@ router.get("/tasks", async (request, response) => {
   }
 });
 
-router.post("/tasks", async (request, response) => {
+router.post("/", async (request, response) => {
   const { name, description, dueDate, priority, completed, category, user } = request.body;
 
   const newTask = new Task({
