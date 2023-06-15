@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
+import axios from "../util/axiosConfig";
 
 const Login = ({ showModal, handleCloseModal }) => {
   const [data, setData] = useState({ email: "", password: "" });
@@ -11,8 +12,17 @@ const Login = ({ showModal, handleCloseModal }) => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Perform login logic using data.username, data.email, and data.password.
-    // ...
+
+    //Set up login login compared to auth backend.
+    /*axios
+      .get("users")
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });*/
+
     console.log("Login clicked!");
     console.log("Password:", data.password);
     console.log("Email:", data.email);
