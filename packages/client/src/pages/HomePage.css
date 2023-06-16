@@ -8,7 +8,7 @@ body {
   align-items: center;
 }
 
-.parent{
+.parent {
   position: relative;
 }
 
@@ -112,10 +112,9 @@ body {
   max-width: 80%;
 }
 
-.cat-image:hover{
+.cat-image:hover {
   animation: jiggle 0.5s infinite;
 }
-
 
 .button-33 {
   display: block;
@@ -153,11 +152,11 @@ body {
     transform: rotate(5deg);
   }
   100% {
-    transform:rotate(0deg);
+    transform: rotate(0deg);
   }
 }
 
-.newUser{
+.newUser {
   margin-top: auto;
   margin-left: 43%;
 }
