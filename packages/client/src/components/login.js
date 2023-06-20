@@ -3,6 +3,10 @@ import { Button, Modal } from "react-bootstrap";
 import axios from "../util/axiosConfig";
 import { useSignIn } from "react-auth-kit";
 
+
+
+import axios from "../util/axiosConfig";
+
 const Login = ({ showModal, handleCloseModal }) => {
   const [data, setData] = useState({ email: "", password: "" });
   const signin = useSignIn();

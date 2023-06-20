@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
+import axios from "../util/axiosConfig";
+
 
 const Signup = ({ showModal, handleCloseModal }) => {
   const [data, setData] = useState({ username: "", password: "", email: "" });
@@ -11,6 +13,15 @@ const Signup = ({ showModal, handleCloseModal }) => {
 
   const handleSignup = (e) => {
     e.preventDefault();
+    /*axios
+      .post("/users", data) // Sending the form data to the "/users" endpoint
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });*/
+
     // Perform signup logic using data.username, data.email, and data.password.
     // ...
     console.log("Signup clicked!");
