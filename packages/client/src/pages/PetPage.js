@@ -29,6 +29,7 @@ function PetPage() {
   return (
     <>
    <h1 className="pet-title">Welcome To Your Pet's Page</h1>
+        
         <Button  className="button-card" onClick={openModal}>Choose Your Pet</Button>
     
       <Modal show={show} className="pet-modal">
