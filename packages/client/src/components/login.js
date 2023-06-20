@@ -5,6 +5,8 @@ import { useSignIn } from "react-auth-kit";
 
 
 
+import axios from "../util/axiosConfig";
+
 const Login = ({ showModal, handleCloseModal }) => {
   const [data, setData] = useState({ email: "", password: "" });
 const signin = useSignIn()
