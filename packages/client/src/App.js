@@ -7,10 +7,11 @@ import PetPage from "./pages/PetPage";
 function App() {
   return (
     <Routes>
-      <Route path="/PetPage" element={<PetPage />} />
       <Route path="/" element={<HomePage />} />
+      <Route path="/PetPage" element={<PetPage />} />
       <Route path="/TaskPage" element={<TaskPage />} />
     </Routes>
   );
 }
 export default App;
+ 
