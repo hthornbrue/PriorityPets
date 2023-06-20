@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
+import axios from "axios";
 
 const Login = ({ showModal, handleCloseModal }) => {
   const [data, setData] = useState({ email: "", password: "" });
@@ -9,13 +10,22 @@ const Login = ({ showModal, handleCloseModal }) => {
     setData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Perform login logic using data.username, data.email, and data.password.
-    // ...
-    console.log("Login clicked!");
-    console.log("Password:", data.password);
-    console.log("Email:", data.email);
+    
+    try {
+      const response = await axios.post("http://localhost:3000/auth/signin", data);
+      const token = response.headers.authorization;
+
+      localStorage.setItem("token", token);
+      
+      console.log("Login successful!");
+      console.log("User:", response.data);
+      
+      handleCloseModal();
+    } catch (error) {
+      console.error("Login error:", error.message);
+    }
   };
 
   return (
@@ -24,8 +34,6 @@ const Login = ({ showModal, handleCloseModal }) => {
         <Modal.Title>Login</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {/* Add your login form or any other content here */}
-        {/* Example login form */}
         <form onSubmit={handleLogin}>
           <input type="email" name="email" placeholder="Email" value={data.email} onChange={handleInputChange} />
           <input type="password" name="password" placeholder="Password" value={data.password} onChange={handleInputChange} />

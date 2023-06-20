@@ -5,6 +5,16 @@ import { User } from "../models";
 
 const router = express.Router();
 
+router.use(express.json());
+
+// Enable CORS to allow cross-origin requests
+router.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
+
 router.route("/").get((req, res, next) => {
   res.send("auth endpoint");
 });
@@ -55,8 +65,18 @@ router.post("/signup", async (req, res) => {
     });
 
     const newUser = await user.save();
-    res.json({ message: "saved successfully", user: newUser });
 
+    const userForToken = {
+      username: newUser.username,
+      id: newUser._id,
+    };
+
+    const token = jwt.sign(userForToken, process.env.JWT_SECRET);
+
+    // Return the JWT token in the response headers
+    res.setHeader("Authorization", token);
+
+    res.status(201).json({ message: "saved successfully", user: newUser });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Internal server error occurred while signing up" });
@@ -93,11 +113,15 @@ router.post("/signin", async (req, res) => {
     };
 
     const token = jwt.sign(userForToken, process.env.JWT_SECRET);
-    res.status(200).send({ token, username: user.username, uid: user.id });
+
+    // Return the JWT token in the response headers
+    res.setHeader("Authorization", token);
+
+    res.status(200).json({ token, username: user.username, uid: user.id });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Internal server error occurred while signing in" });
   }
 });
 
-module.exports = router;
+export default router;
