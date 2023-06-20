@@ -1,0 +1,11 @@
+.modal-grave {
+  height: 90px;
+  width: 90px;
+}
+
+.grave-modal-container {
+  display: flex;
+  height: 140px;
+  justify-content: center;
+  margin-top: 50px;
+}
