@@ -7,9 +7,9 @@ import PetPage from "./pages/PetPage";
 function App() {
   return (
     <Routes>
-      <Route path="/PetPage" element={<PetPage />} />
+      <Route path="/pets" element={<PetPage />} />
       <Route path="/" element={<HomePage />} />
-      <Route path="/TaskPage" element={<TaskPage />} />
+      <Route path="/tasks" element={<TaskPage />} />
     </Routes>
   );
 }

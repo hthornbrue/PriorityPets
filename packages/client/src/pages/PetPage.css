@@ -90,6 +90,7 @@
   .pet-modal {
     background-color: transparent;
   
+  
   }
 
 
@@ -123,4 +124,13 @@ position: relative;
   bottom: 50px;
   display: flex;
 } */
+/* 
+.modal-cancel-button {
+  position: relative;
+  width: 100px;
+  bottom: 40px;
+  display: flex;
+  justify-content: center;
+  left: 200px;
 
+} */

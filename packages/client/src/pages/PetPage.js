@@ -32,9 +32,15 @@ function PetPage() {
         <Button  className="button-card" onClick={openModal}>Choose Your Pet</Button>
     
       <Modal show={show} className="pet-modal">
-        <PetPicker />
+        <PetPicker 
+        // selected={pet}
+        // imgs={imgs}
+        // data={data}
+        // setData={setData}
+        // file={file}
+        />
 
-        <Button onClick={closeModal}>Cancel</Button>
+        <Button className="modal-cancel-button" onClick={closeModal}>Cancel</Button>
       </Modal>
 
       {/* <div className="graveyard-card"> */}
@@ -48,24 +54,26 @@ function PetPage() {
         
           <img
             className="foodBowl"
+            alt="food bowl"
             src="/accessories/foodbowl.png"
           />
 
           <img
-            className="waterBowl"
+            className="waterBowl" alt="water bowl"
             src="/accessories/waterbowl.png"
           />
-          <img className="petty" src="/x2/Cat_Left@2x.png" />
+          <img className="petty" alt="pet" src="/x2/Cat_Left@2x.png" />
           <img
             className="petHouse"
+            alt="pet house"
             src="/accessories/pethouse.png"
           />
         
         </div>
         <div className="graveyard-holder">
-      <img className="petTree" src="/accessories/tree.png" />
-      <img className="grave" src="/accessories/gravemarker.png" />
-      <img className="grave" src="/accessories/gravemarker.png" />
+      <img className="petTree" alt="tree" src="/accessories/tree.png" />
+      <img className="grave" alt="grave" src="/accessories/gravemarker.png" />
+      <img className="grave" alt="grave" src="/accessories/gravemarker.png" />
       </div>
       
     </>
