@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
-import axios from "axios";
+import axios from "../util/axiosConfig";
+import { useSignIn } from "react-auth-kit";
+
+
 
 const Login = ({ showModal, handleCloseModal }) => {
   const [data, setData] = useState({ email: "", password: "" });
-
+const signin = useSignIn()
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setData((prevData) => ({ ...prevData, [name]: value }));
@@ -14,7 +17,7 @@ const Login = ({ showModal, handleCloseModal }) => {
     e.preventDefault();
     
     try {
-      const response = await axios.post("http://localhost:3000/auth/signin", data);
+      const response = await axios.post("/auth/signin", data);
       const token = response.headers.authorization;
 
       localStorage.setItem("token", token);
