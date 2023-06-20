@@ -1,20 +1,36 @@
 import express from "express";
-
 import { Task } from "../models";
+
+import axios from "axios";
+
+export async function getUserTasks() {
+  try {
+    const response = await axios.get("/tasks"); // Update the URL if necessary
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to fetch user tasks");
+  }
+}
+
 
 const router = express.Router();
 
-router.get("/", async (request, response) => {
+// Retrieve user tasks
+router.get("/tasks", async (req, res) => {
   try {
-    const tasks = await Task.find().exec();
-    response.json(tasks);
+    const userId = req.user.id; // Assuming you have user authentication middleware that sets the user ID in the request object
+
+    const tasks = await Task.find({ user: userId }).exec();
+    res.json(tasks);
   } catch (error) {
-    response.status(500).json({ error: "An error occurred when retrieving tasks." });
+    console.error("Error fetching user tasks:", error);
+    res.status(500).json({ error: "Internal server error occurred while fetching tasks" });
   }
 });
 
-router.post("/", async (request, response) => {
-  const { name, description, dueDate, priority, completed, category, user } = request.body;
+// Create a task
+router.post("/", async (req, res) => {
+  const { name, description, dueDate, priority, completed, category, user } = req.body;
 
   const newTask = new Task({
     name,
@@ -28,9 +44,10 @@ router.post("/", async (request, response) => {
 
   try {
     await newTask.save();
-    response.json(newTask);
+    res.json(newTask);
   } catch (error) {
-    response.status(500).json({ error: "An error occurred when creating the task." });
+    console.error("Error creating task:", error);
+    res.status(500).json({ error: "Internal server error occurred when creating the task" });
   }
 });
 
