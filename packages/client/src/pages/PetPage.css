@@ -41,15 +41,13 @@
 }
 
 .pet-dec-card {
-    position: relative;
-    left: 320px;
-    border-radius: 15px;
-    top: 450px;
-    width: 50vw;
-    max-height: 35vh;
-    padding: 10px;
-  
-  }
+  position: relative;
+  top: 250px;
+  margin: 0 auto;
+  width: 50vw;
+  max-height: 35vh;
+  padding: 10px;
+}
   
   .cemetery {
     width: 250px;
@@ -74,7 +72,7 @@
     position: relative;
     font-size: larger;
     top: 180px;
-    right: 360px;
+    left: 320px;
     background-color: black;
     border: 1px black solid;
   }

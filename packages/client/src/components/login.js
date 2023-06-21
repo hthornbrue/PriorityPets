@@ -17,6 +17,14 @@ const Login = ({ showModal, handleCloseModal }) => {
 
     try {
       const response = await axios.post("/auth/signin", data);
+
+      signin({
+        token:response.data.token,
+        expiresIn:360000,
+        tokenType:"Bearer",
+        authState:{email: data.email}
+      })
+
       const token = response.headers.authorization;
 
       localStorage.setItem("token", token);
@@ -38,8 +46,20 @@ const Login = ({ showModal, handleCloseModal }) => {
       </Modal.Header>
       <Modal.Body>
         <form onSubmit={handleLogin}>
-          <input type="email" name="email" placeholder="Email" value={data.email} onChange={handleInputChange} />
-          <input type="password" name="password" placeholder="Password" value={data.password} onChange={handleInputChange} />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={data.email}
+            onChange={handleInputChange}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={data.password}
+            onChange={handleInputChange}
+          />
           <Button type="submit">Login</Button>
         </form>
       </Modal.Body>

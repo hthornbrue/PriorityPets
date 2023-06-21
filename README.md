@@ -1,7 +1,16 @@
 Install this stuff
+<!-- Install for Back End -->
 
-Back-End: npm install express mongodb mongoose
+# Express
+npm install express mongodb mongoose
 
+# Node Mailer
+
+npm install nodemailer
+
+# SendGrid
+
+npm install @sendgrid/mail
 
 <!-- Install for Front End -->
 
