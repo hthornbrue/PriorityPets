@@ -246,12 +246,12 @@ function TaskManagement() {
                     </span>
                     <Button
                       className="editButton"
-                      onClick={() => openEditModal(index)} 
+                      onClick={() => openEditModal(index)}
                     >
                       Edit
                     </Button>
-                    
-                    <Modal //edit task modal 
+
+                    <Modal //edit task modal
                       className="modal"
                       show={showEditModal}
                       onHide={() => setShowEditModal(false)}
