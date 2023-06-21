@@ -130,23 +130,14 @@ function HomePage() {
           height="200px"
         />
       </div>
+      <Button className="button-33" variant="primary" onClick={handleOpenLoginModal}>
         Login
       </Button>
-      <Login
-        showModal={showLoginModal}
-        handleCloseModal={handleCloseLoginModal}
-      />
-      <Button
-        className="button-33"
-        variant="primary"
-        onClick={handleOpenSignupModal}
-      >
+      <Login showModal={showLoginModal} handleCloseModal={handleCloseLoginModal} />
+      <Button className="button-33" variant="primary" onClick={handleOpenSignupModal}>
         Signup
       </Button>
-      <Signup
-        showModal={showSignupModal}
-        handleCloseModal={handleCloseSignupModal}
-      />
+      <Signup showModal={showSignupModal} handleCloseModal={handleCloseSignupModal} onError={handleSignupError} />
     </div>
   );
 }
