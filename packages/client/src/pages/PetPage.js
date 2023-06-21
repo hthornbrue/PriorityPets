@@ -3,6 +3,8 @@ import PetPicker from "../components/PetPicker";
 import "./PetPage.css";
 import { Modal, Button } from "react-bootstrap";
 import GravePicker from "../components/GravePicker";
+import NavBar from "../components/Navbar.js";
+
 
 function PetPage() {
   const [show, setShow] = useState(false);

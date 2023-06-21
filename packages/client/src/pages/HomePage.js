@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 import Login from "../components/login";
 import Signup from "../components/signup";
 import { Button } from "react-bootstrap";
+import NavBar from "../components/Navbar";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function HomePage() {
   const [showLoginModal, setLoginShowModal] = useState(false);
   const [showSignupModal, setSignupShowModal] = useState(false);
-
-  console.log(window.location);
 
   const handleOpenLoginModal = () => setLoginShowModal(true);
   const handleCloseLoginModal = () => setLoginShowModal(false);
@@ -18,12 +19,14 @@ function HomePage() {
   const handleOpenSignupModal = () => setSignupShowModal(true);
   const handleCloseSignupModal = () => setSignupShowModal(false);
 
-  console.log("bad");
+  const handleSignupError = (error) => {
+    toast.error(`Error: ${error.response.status}: ${error.response.data.error}`);
+  };
 
   const logo = document.querySelectorAll("#logo path");
-  for (let i = 0; i < logo.length; i++) {
+  /*for (let i = 0; i < logo.length; i++) {
     console.log(`Letter ${i} is ${logo[i].getTotalLength()}`);
-  }
+  }*/
 
   return (
     <div className="home-page">
@@ -127,16 +130,6 @@ function HomePage() {
           height="200px"
         />
       </div>
-      {/*<Link to="/TaskPage">*/}
-      {/*<button className="button-33" role="button">
-        Log In
-  </button>
-      {/*</Link>*/}
-      <Button
-        className="button-33"
-        variant="primary"
-        onClick={handleOpenLoginModal}
-      >
         Login
       </Button>
       <Login
