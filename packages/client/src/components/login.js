@@ -3,13 +3,10 @@ import { Button, Modal } from "react-bootstrap";
 import axios from "../util/axiosConfig";
 import { useSignIn } from "react-auth-kit";
 
-
-
-import axios from "../util/axiosConfig";
-
 const Login = ({ showModal, handleCloseModal }) => {
   const [data, setData] = useState({ email: "", password: "" });
-const signin = useSignIn()
+  const signin = useSignIn();
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setData((prevData) => ({ ...prevData, [name]: value }));
@@ -17,17 +14,18 @@ const signin = useSignIn()
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    
+
     try {
       const response = await axios.post("/auth/signin", data);
       const token = response.headers.authorization;
 
       localStorage.setItem("token", token);
-      
+
       console.log("Login successful!");
       console.log("User:", response.data);
-      
+
       handleCloseModal();
+      signin(); // Trigger the sign-in state update
     } catch (error) {
       console.error("Login error:", error.message);
     }
