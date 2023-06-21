@@ -19,7 +19,7 @@ const initialData = {
   hungerLevel: 100,
 };
 
-const PetPicker = ({ user, selected, setSelected }) => {
+const PetPicker = ({ user}) => {
   const [images, setImages] = useState([
     "/x2/Cat_Down@2x.png",
     "/x2/Chick_Down@2x.png",
@@ -30,35 +30,21 @@ const PetPicker = ({ user, selected, setSelected }) => {
   ]);
 
   const [data, setData] = useState([initialData]);
-  const [file, setFile] = useState();
+  const [selected, setSelected] = useState("")
   /**
    * @param {*} e
    */
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  };
-
-  /**
-   * @param {*} e
-   */
-
-  const handleUpload = (e) => {
-    e.preventDefault();
-  };
-
-  const formData = new FormData();
-
-  formData.append("pet", file);
-
-  try {
-    const response = axios
-      .post(`/pets`)
-      .then((response) => console.log(response));
-    setData({ ...data, url: response.data.path });
-  } catch (error) {
-    console.log("You have an error");
-  }
+      try {
+        const response = await axios.post("/pets", data);
+        setData({ ...data, URL: response.data.path });
+      } catch (error) {
+        console.log("Error occurred while submitting the form:", error);
+      }
+    };
+  
   return (
     <div >
       <Container className="pet-container">
@@ -75,10 +61,9 @@ const PetPicker = ({ user, selected, setSelected }) => {
                   key={pet}
                   src={pet}
                   alt={"pet"}
-                  onClick={() => setSelected(pet)}
+                  onClick={() => console.log(setSelected(pet), selected)}
                 />
               ))}
-              
             </div>
           </Form.Group>
         </Form>
