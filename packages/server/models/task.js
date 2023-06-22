@@ -21,7 +21,11 @@ const taskSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    required: true,
+    required: false,
+  },
+  reminder: {
+    type: Date,
+    required: false,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
