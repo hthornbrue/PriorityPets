@@ -2,6 +2,7 @@ import express from "express";
 import router from "./routes/index.js";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from "cors";
 
 // Database
 dotenv.config();
@@ -11,8 +12,9 @@ mongoose
   .catch((err) => console.error(err));
 
 const app = express();
-//Replace 'mongodb' url with connection information
-//app.use("/", router);
+app.use(cors());
+app.use(express.json());
+app.use("/api", router);
 
 const port = 3001;
 app.listen(port, () => {

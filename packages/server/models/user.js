@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema.Types;
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -22,6 +23,28 @@ const userSchema = new mongoose.Schema({
   level: {
     type: Number,
     default: 0,
+  },
+  money: {
+    type: Number,
+    default: 0,
+  },
+  tasks: [
+    {
+      type: ObjectId,
+      ref: "Task",
+    },
+  ],
+  pets: {
+    currentPet: {
+      type: ObjectId,
+      ref: "Pet",
+    },
+    deceasedPets: [
+      {
+        type: ObjectId,
+        ref: "Pet",
+      },
+    ],
   },
 });
 

@@ -1,0 +1,36 @@
+.pet-card {
+  background-color: green;
+  max-width: 500px;
+  max-height: 180vh;
+  min-height: 300px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px;
+}
+
+#image {
+  width: 150px;
+}
+
+#image:hover {
+  width: 150px;
+  border-radius: 40px;
+  animation: jiggle 0.2s infinite;
+}
+
+.pet-picker-header {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  font-size: xx-large;
+  border-radius: 22px;
+}
+
+.pet-container {
+  background-color: green;
+}

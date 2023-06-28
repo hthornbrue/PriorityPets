@@ -1,7 +1,16 @@
 Install this stuff
+<!-- Install for Back End -->
 
-Back-End: npm install express mongodb mongoose
+# Express
+npm install express mongodb mongoose
 
+# Node Mailer
+
+npm install nodemailer
+
+# SendGrid
+
+npm install @sendgrid/mail
 
 <!-- Install for Front End -->
 
@@ -17,6 +26,8 @@ npm install react-datetime-picker
 
 npm install bootstrap
 
+# React Auth Kit
+npm install react-auth-kit
 ---
 
 # Getting Started with Create React App

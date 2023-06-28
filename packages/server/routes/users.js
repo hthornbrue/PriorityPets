@@ -4,7 +4,7 @@ import { User, Task, Pet } from "../models";
 
 const router = express.Router();
 
-router.get("/user/:username", async (request, response) => {
+router.get("/:username", async (request, response) => {
   const username = request.params.username;
 
   try {
@@ -29,7 +29,7 @@ router.get("/user/:username", async (request, response) => {
   }
 });
 
-router.post("/user", async (request, response) => {
+router.post("/", async (request, response) => {
   const { username, email, password, xp, level } = request.body;
   const update = { username, email, xp, level };
 
