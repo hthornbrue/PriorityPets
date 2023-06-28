@@ -29,11 +29,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #61dafb;
+    background-color: #171a1b;
     padding: 10px;
   }
   
   .title {
+    text-align: left;
     font-size: 24px;
     font-weight: bold;
     color: #fff;
