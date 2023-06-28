@@ -24,6 +24,10 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  money: {
+    type: Number,
+    default: 0,
+  },
   tasks: [
     {
       type: ObjectId,

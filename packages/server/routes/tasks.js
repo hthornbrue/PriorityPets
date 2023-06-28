@@ -1,5 +1,4 @@
 import express from "express";
-
 import { Task } from "../models";
 
 const router = express.Router();
@@ -14,15 +13,20 @@ router.get("/", async (request, response) => {
 });
 
 router.post("/", async (request, response) => {
-  const { name, description, dueDate, priority, completed, category, user } = request.body;
+  const { name, description, priority, category, dueDate, completed, reminder, user } = request.body;
+
+  if (!name || !dueDate || !user) {
+    return response.status(400).json({ error: "Required fields are missing." });
+  }
 
   const newTask = new Task({
     name,
     description,
-    dueDate,
     priority,
-    completed,
     category,
+    dueDate,
+    completed,
+    reminder,
     user,
   });
 

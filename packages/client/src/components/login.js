@@ -19,15 +19,11 @@ const Login = ({ showModal, handleCloseModal }) => {
       const response = await axios.post("/auth/signin", data);
 
       signin({
-        token:response.data.token,
-        expiresIn:360000,
-        tokenType:"Bearer",
-        authState:{email: data.email}
-      })
-
-      const token = response.headers.authorization;
-
-      localStorage.setItem("token", token);
+        token: response.data.token,
+        expiresIn: 360000,
+        tokenType: "Bearer",
+        authState: { email: data.email },
+      });
 
       console.log("Login successful!");
       console.log("User:", response.data);
@@ -35,7 +31,7 @@ const Login = ({ showModal, handleCloseModal }) => {
       handleCloseModal();
       signin(); // Trigger the sign-in state update
     } catch (error) {
-      console.error("Login error:", error.message);
+      console.error("Login error:", error.message + "apple");
     }
   };
 
@@ -46,20 +42,8 @@ const Login = ({ showModal, handleCloseModal }) => {
       </Modal.Header>
       <Modal.Body>
         <form onSubmit={handleLogin}>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={data.email}
-            onChange={handleInputChange}
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={data.password}
-            onChange={handleInputChange}
-          />
+          <input type="email" name="email" placeholder="Email" value={data.email} onChange={handleInputChange} />
+          <input type="password" name="password" placeholder="Password" value={data.password} onChange={handleInputChange} />
           <Button type="submit">Login</Button>
         </form>
       </Modal.Body>
