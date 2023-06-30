@@ -133,6 +133,17 @@ function TaskManagement() {
     });
   }, [tasks]);
 
+  // useEffect(() => {
+  //   axios
+  //     .get("/tasks")
+  //     .then((response) => {
+  //       setTasks(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
+
   return (
     <>
       <div className="div-card2">
