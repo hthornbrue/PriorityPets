@@ -3,6 +3,7 @@ import PetPicker from "../components/PetPicker";
 import "./PetPage.css";
 import { Modal, Button } from "react-bootstrap";
 import GravePicker from "../components/GravePicker";
+import PetGame from "../components/PetGame";
 import NavBar from "../components/Navbar.js";
 
 
@@ -64,6 +65,7 @@ function PetPage() {
           src="/accessories/waterbowl.png"
         />
         <img className="petty" alt="pet" src="/x2/Cat_Left@2x.png" />
+        {/* <PetGame /> */}
         <img
           className="petHouse"
           alt="pet house"

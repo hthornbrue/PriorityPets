@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  money: {
+  points: {
     type: Number,
     default: 0,
   },
