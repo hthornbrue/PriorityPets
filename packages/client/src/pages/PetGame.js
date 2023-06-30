@@ -116,5 +116,6 @@ const PetGame = () => {
       </div>
     </div>
   );
+  
 }
 export default PetGame;
