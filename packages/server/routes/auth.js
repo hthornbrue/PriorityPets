@@ -16,7 +16,7 @@ router.post("/signup", async (req, res, next) => {
   try {
     const { email, password, username } = req.body;
 
-    let user = await User.findOne({ email });
+    let user = await User.findOne({ email: email });
 
     if (user)
       return res.status(422).json({
@@ -41,24 +41,28 @@ router.post("/signup", async (req, res, next) => {
 router.post("/signin", async (req, res, next) => {
   try {
     const { email, password } = req.body;
+    console.log(email);
 
-    let user = await User.findOne({ email });
-    if (!user)
+    let user = await User.findOne({ email: email });
+    console.log(user);
+    if (!user) {
       return res.status(401).json({
         message: "Authentication error",
         errors: {
           email: "Invalid credentials.",
         },
       });
+    }
 
     const passwordIsValid = await bcrypt.compare(password, user.passwordHash);
-    if (!passwordIsValid)
+    if (!passwordIsValid) {
       return res.status(401).json({
         message: "Authentication error",
         errors: {
           email: "Invalid credentials.",
         },
       });
+    }
 
     const accessToken = jwt.sign({ sub: email }, keys.auth.accessTokenSecret, {
       expiresIn: keys.auth.accessTokenExp,
@@ -72,7 +76,7 @@ router.post("/signin", async (req, res, next) => {
     user = user.toJSON();
     delete user.passwordHash;
 
-    res.json({ token: accessToken, email }); //res.cookie(keys.auth.cookieName, refreshToken, keys.auth.cookieOptions).json({ token: accessToken, user });
+    res.json({ token: accessToken, user }); //res.cookie(keys.auth.cookieName, refreshToken, keys.auth.cookieOptions).json({ token: accessToken, user });
   } catch (error) {
     next(error);
   }

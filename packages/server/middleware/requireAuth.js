@@ -10,11 +10,17 @@ export default async function requireAuth(req, res, next) {
 
   jwt.verify(accessToken, keys.auth.accessTokenSecret, (err, payload) => {
     if (err) {
-      console.log(err);
-      return next(err);
+      return res.status(401).json({ message: "Unauthorized error" });
     }
-    if (!payload.sub) return next(err);
+    if (!payload.sub) return res.status(401).json({ message: "Unauthorized error" });
 
-    User.findeOne({ email: payload.sub });
+    User.findeOne({ email: payload.sub }).then((user) => {
+      if (!user) {
+        return res.status(401).json({ message: "Unauthorized error" });
+      }
+
+      req.user = user;
+      next();
+    });
   });
 }
