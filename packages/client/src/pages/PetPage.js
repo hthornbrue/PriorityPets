@@ -19,14 +19,13 @@ function PetPage() {
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(0);
-  const [selectedPet, setSelectedPet] = useState("");
+  const [selectedPet, setSelectedPet] = useState(imgs[0]);
 
   const openModal = (e) => {
     e.preventDefault();
     setShow(true);
-  
   };
-console.log(selectedPet)
+
   const closeModal = () => {
     setShow(false);
   };
@@ -41,21 +40,19 @@ console.log(selectedPet)
   };
 
   const handlePetSelection = (event) => {
-  setShow(false)
-
+    setShow(false);
   };
 
   return (
     <>
-      <div
-        className="main-background-div"
-        style={{ backgroundColor: "green", width: "100vw", height: "100vh" }}
-      >
+      <div className="main-background-div">
         <NavBar />
         <h1 className="pet-title">Welcome To Your Pet's Page</h1>
         <Button className="button-card" onClick={openModal}>
           Choose Your Pet
         </Button>
+
+        {/* <Button className="jump-button">Wanna See Me Jump?</Button> */}
 
         <input
           type="range"
@@ -85,7 +82,9 @@ console.log(selectedPet)
             imgs={imgs}
             handlePetSelection={handlePetSelection}
           />
-          <Button onClick={handlePetSelection} className="handle-pet-btn">Choose</Button>
+          <Button onClick={handlePetSelection} className="handle-pet-btn">
+            Choose
+          </Button>
         </Modal>
 
         <Button className="graveyard-button" onClick={openGraveModal}>
@@ -106,9 +105,6 @@ console.log(selectedPet)
             Revive Your Pet
           </Modal.Header>
           <GravePicker />
-          {/* <Button className="close-grave-modal" onClick={closeGraveModal}>
-          Close
-        </Button> */}
         </Modal>
         <div className="pet-dec-card">
           <img
@@ -134,11 +130,7 @@ console.log(selectedPet)
             src="/accessories/pethouse.png"
           />
         </div>
-        <div className="graveyard-holder">
-          {/* <img className="petTree" alt="tree" src="/accessories/tree.png" /> */}
-          {/* <img className="grave" alt="grave" src="/accessories/gravemarker.png" /> */}
-          {/* <img className="grave" alt="grave" src="/accessories/gravemarker.png" /> */}
-        </div>
+        <div className="graveyard-holder"></div>
       </div>
     </>
   );

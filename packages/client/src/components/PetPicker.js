@@ -35,7 +35,6 @@ const PetPicker = ({ selected, setSelected, pet }) => {
   };
 
   const handlePetSelection = (pet) => {
-    console.log(pet);
     setSelected(pet);
   };
 
