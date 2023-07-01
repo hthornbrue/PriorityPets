@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import useAuth from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ showModal, handleCloseModal }) => {
   const [data, setData] = useState({ email: "", password: "" });
   const { signIn } = useAuth();
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -15,6 +17,8 @@ const Login = ({ showModal, handleCloseModal }) => {
     e.preventDefault();
 
     signIn(data.email, data.password);
+
+    navigate("/TaskPage");
   };
 
   return (

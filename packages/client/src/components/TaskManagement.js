@@ -6,13 +6,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal } from "react-bootstrap";
 import "./TaskManagement.css";
 import axios from "../util/axiosConfig";
-import { useAuthUser } from "react-auth-kit";
 
 const bgColor = ["khaki", "orange", "orangered"];
 function TaskManagement() {
-  const auth = useAuthUser();
-  console.log(`Hello ${auth().user}`);
-
   const [tasks, setTasks] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
