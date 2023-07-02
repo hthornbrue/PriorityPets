@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./PetPicker.css";
-import axios from "axios";
+import axios from "packages/client/src/util/axiosConfig.js"
 import { Container, Form } from "react-bootstrap";
 
 const imgs = [
@@ -15,20 +15,19 @@ const imgs = [
 const initialData = {
   name: "",
   appearance: "",
-  URL: "",
   healthLevel: 100,
-  hungerLevel: 100,
 };
 
 const PetPicker = ({ selected, setSelected, pet }) => {
-  const [data, setData] = useState([initialData]);
+  const [formData, setFormData] = useState(initialData);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(data);
+    console.log(formData);
     try {
-      const response = await axios.post("/:id", data);
-      setData({ ...data, URL: response.imgs.path });
+      const response = await axios.post(`/pets/${selected}`, { user: email, ...formData });
+      setFormData(initialData);
+      console.log("Updated pet:", response.data);
     } catch (error) {
       console.log("Error occurred while submitting the form:", error);
     }
@@ -36,6 +35,12 @@ const PetPicker = ({ selected, setSelected, pet }) => {
 
   const handlePetSelection = (pet) => {
     setSelected(pet);
+    setFormData({ ...initialData, appearance: pet });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   return (
@@ -43,9 +48,6 @@ const PetPicker = ({ selected, setSelected, pet }) => {
       <Container className="pet-container">
         <Form onSubmit={handleSubmit}>
           <Form.Group>
-            {/* <Form.Label className="pet-picker-header">
-              Choose Your Pet
-            </Form.Label> */}
             <div className="pet-card">
               {imgs.map((pet) => (
                 <img
@@ -58,6 +60,14 @@ const PetPicker = ({ selected, setSelected, pet }) => {
                 />
               ))}
             </div>
+            <Form.Control
+              type="text"
+              placeholder="Pet Name"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+            />
+            <button type="submit">Submit</button>
           </Form.Group>
         </Form>
       </Container>

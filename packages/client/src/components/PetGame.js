@@ -5,6 +5,7 @@ import { authContext } from "../contexts/authContext";
 const PetGame = () => {
   const { auth } = useContext(authContext);
 
+
   const feedPet = async () => {
     if (auth.user.points >= 10) {
       auth.user.currentpet.healthLevel += 10;
@@ -84,9 +85,9 @@ const PetGame = () => {
   return (
     <div>
       <h1>Virtual Pet Game</h1>
-      <div>
+      {/* <div>
         {auth.user.pet && <img src={auth.user.pet.appearance} alt="Pet" />}
-      </div>
+      </div> */}
       <div>
         <h2>Health: {auth.user.currentpet.healthLevel}</h2>
         <h2>Points: {auth.user.points}</h2>
