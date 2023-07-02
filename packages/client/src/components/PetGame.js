@@ -7,7 +7,7 @@ const PetGame = () => {
 
   const feedPet = async () => {
     if (auth.user.points >= 10) {
-      auth.user.currentpet.health += 10;
+      auth.user.currentpet.healthLevel += 10;
       auth.user.points -= 10;
 
       try {
@@ -18,7 +18,7 @@ const PetGame = () => {
           points: auth.user.points,
           pet: {
             ...auth.user.pet,
-            healthLevel: auth.user.currentpet.health,
+            healthLevel: auth.user.currentpet.healthLevel,
           },
         });
       } catch (error) {
@@ -42,7 +42,7 @@ const PetGame = () => {
           points: auth.user.points,
           pet: {
             ...auth.user.pet,
-            healthLevel: auth.user.currentpet.health,
+            healthLevel: auth.user.currentpet.healthLevel,
           },
         });
       } catch (error) {
@@ -66,7 +66,7 @@ const PetGame = () => {
           points: auth.user.points,
           pet: {
             ...auth.user.pet,
-            healthLevel: auth.user.currentpet.health,
+            healthLevel: auth.user.currentpet.healthLevel,
           },
         });
       } catch (error) {
@@ -88,7 +88,7 @@ const PetGame = () => {
         {auth.user.pet && <img src={auth.user.pet.appearance} alt="Pet" />}
       </div>
       <div>
-        <h2>Health: {auth.user.currentpet.health}</h2>
+        <h2>Health: {auth.user.currentpet.healthLevel}</h2>
         <h2>Points: {auth.user.points}</h2>
       </div>
       <div>
