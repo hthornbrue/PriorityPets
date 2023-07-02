@@ -49,8 +49,7 @@ router.post("/heal/:id", async (request, response) => {
     const pet = await Pet.findById(id).exec();
 
     if (pet) {
-      // Perform healing logic here
-      pet.healthLevel = 100; // Set health level to 100
+      pet.healthLevel = pet.healthLevel + 10; 
       await pet.save();
       response.json(pet);
     } else {
