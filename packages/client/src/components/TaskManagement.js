@@ -161,10 +161,10 @@ function TaskManagement() {
               <DateTimePicker className="form-control mb-2 datePicker" value={dueDate} onChange={(date) => setDueDate(date)} placeholder="Due Date" />
               <span className="dueDateSpan">Set Reminder</span>
               <DateTimePicker className="form-control mb-2 datePicker"  value={reminder} onChange={(date) => setReminder(date)} placeholder="Reminder" />
-              <Button className="float-right mt-3" style={{backgroundColor: "blue", borderRadius: "10px"}} onClick={handleAddTask}>
+              <Button className="float-right mt-3" style={{ borderRadius: "10px"}} onClick={handleAddTask}>
                 Add Task
               </Button>
-              <Button className="float-right mt-3" style={{ marginLeft: "20px", backgroundColor: "blue", borderRadius: "10px"}} onClick={closeModal}>
+              <Button className="float-right mt-3" style={{ marginLeft: "20px", borderRadius: "10px"}} onClick={closeModal}>
                 Close
               </Button>
             </div>
@@ -211,9 +211,9 @@ function TaskManagement() {
                     <span className="para">Due: {task.dueDate ? moment(task.dueDate).format("ddd MMM DD 'YY h:mm") : "-"}</span>
                     <br></br>
                     <span className="para">REM: {task.reminder ? moment(task.reminder).format("ddd MMM DD 'YY h:mm") : "-"}</span>
-                    <Button className="editButton"  style={{backgroundColor: "gray", borderRadius: "10px"}} onClick={() => openEditModal(index)}>
+                    <button className="edit-button"  onClick={() => openEditModal(index)}>
                       Edit
-                    </Button>
+                    </button>
 
                     <Modal //edit task modal
                       className="modal"
@@ -255,7 +255,7 @@ function TaskManagement() {
                       </div>
                     </Modal>
 
-                    <Button className="btn btn-danger deleteButtonTask" style={{ marginLeft: "30px", border: "2px black solid", backgroundColor: "red", borderRadius: "10px" }} onClick={() => handleDeleteTask(index)}>
+                    <Button className="btn btn-danger deleteButtonTask" style={{ marginLeft: "30px", borderRadius: "10px", fontSize: "larger", marginBottom: "5px"}} onClick={() => handleDeleteTask(index)}>
                       Delete Task
                     </Button>
                   </div>

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import TaskManagement from "../components/TaskManagement";
 import NavBar from "../components/Navbar.js";
+import './TaskPage.css'
 import { authContext } from "../contexts/authContext";
 
 function TaskPage() {

@@ -63,9 +63,9 @@ body {
     color: #5bc0de;
   }
   
-  .link.active {
+  /* .link.active {
     color: #5bc0de;
-  }
+  } */
   
   .form-group {
     margin-bottom: 20px;
@@ -100,13 +100,10 @@ body {
     font-size: 16px;
     border: none;
     border-radius: 4px;
-    background-color: #61dafb;
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
   
-  .btn:hover {
-    background-color: #5bc0de;
-  }
+ 
   

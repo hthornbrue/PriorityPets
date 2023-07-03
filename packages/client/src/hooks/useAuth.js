@@ -37,15 +37,15 @@ const useAuth = () => {
         });
     }
   };
-}
-//   const signOut = () => {};
 
-//   return {
-//     auth,
-//     signUp,
-//     signIn,
-//     signOut,
-//   };
-// };
+  const signOut = () => {};
+
+  return {
+    auth,
+    signUp,
+    signIn,
+    signOut,
+  };
+};
 
 export default useAuth;

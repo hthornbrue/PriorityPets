@@ -98,9 +98,19 @@ ol {
   justify-content: center;
 }
 
-.editButton {
-  background-color: dimgrey;
-  margin-left: 30px;
+.edit-button {
+background-color: gray;
+border: none;
+width: 90px;
+height: 45px;
+margin-left: 30px;
+font-size: larger;
+border-radius: 8px;
+padding: 5px;
+}
+.edit-button:hover {
+  background-color: rgb(158, 153, 153);
+  transition: ease-in-out;
 }
 
 .datePicker {
