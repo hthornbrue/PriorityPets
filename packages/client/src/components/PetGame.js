@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { authContext } from "../contexts/authContext";
+import useAuth from "../hooks/useAuth";
 
 const PetGame = () => {
-  const { auth } = useContext(authContext);
-
+  const { auth } = useAuth();
+  console.log(auth);
 
   const feedPet = async () => {
     if (auth.user.points >= 10) {

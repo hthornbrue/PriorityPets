@@ -1,16 +1,10 @@
 import React, { useState } from "react";
 import "./PetPicker.css";
-import axios from "packages/client/src/util/axiosConfig.js"
+import axios from "../util/axiosConfig";
 import { Container, Form } from "react-bootstrap";
+import useAuth from "../hooks/useAuth";
 
-const imgs = [
-  "/x2/Cat_Down@2x.png",
-  "/x2/Chick_Down@2x.png",
-  "/x2/Fox_Down@2x.png",
-  "/x2/Mouse_Down@2x.png",
-  "/x2/Pig_Down@2x.png",
-  "/x2/Rabbit_Down@2x.png",
-];
+const imgs = ["/x2/Cat_Down@2x.png", "/x2/Chick_Down@2x.png", "/x2/Fox_Down@2x.png", "/x2/Mouse_Down@2x.png", "/x2/Pig_Down@2x.png", "/x2/Rabbit_Down@2x.png"];
 
 const initialData = {
   name: "",
@@ -20,12 +14,13 @@ const initialData = {
 
 const PetPicker = ({ selected, setSelected, pet }) => {
   const [formData, setFormData] = useState(initialData);
+  const auth = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
     try {
-      const response = await axios.post(`/pets/${selected}`, { user: email, ...formData });
+      const response = await axios.post(`/pets/${selected}`, { user: auth.email, ...formData });
       setFormData(initialData);
       console.log("Updated pet:", response.data);
     } catch (error) {
@@ -50,23 +45,10 @@ const PetPicker = ({ selected, setSelected, pet }) => {
           <Form.Group>
             <div className="pet-card">
               {imgs.map((pet) => (
-                <img
-                  id="image"
-                  className={pet === selected ? "selected" : ""}
-                  key={pet}
-                  src={pet}
-                  alt={"pet"}
-                  onClick={() => handlePetSelection(pet)}
-                />
+                <img id="image" className={pet === selected ? "selected" : ""} key={pet} src={pet} alt={"pet"} onClick={() => handlePetSelection(pet)} />
               ))}
             </div>
-            <Form.Control
-              type="text"
-              placeholder="Pet Name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-            />
+            <Form.Control type="text" placeholder="Pet Name" name="name" value={formData.name} onChange={handleInputChange} />
             <button type="submit">Submit</button>
           </Form.Group>
         </Form>

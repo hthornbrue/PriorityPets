@@ -5,16 +5,9 @@ import { Modal, Button } from "react-bootstrap";
 import GravePicker from "../components/GravePicker";
 import NavBar from "../components/Navbar.js";
 import { motion } from "framer-motion";
-import PetGame from "../components/PetGame";
+//import PetGame from "../components/PetGame";
 
-const imgs = [
-  "/x2/Cat_Down@2x.png",
-  "/x2/Chick_Down@2x.png",
-  "/x2/Fox_Down@2x.png",
-  "/x2/Mouse_Down@2x.png",
-  "/x2/Pig_Down@2x.png",
-  "/x2/Rabbit_Down@2x.png",
-];
+const imgs = ["/x2/Cat_Down@2x.png", "/x2/Chick_Down@2x.png", "/x2/Fox_Down@2x.png", "/x2/Mouse_Down@2x.png", "/x2/Pig_Down@2x.png", "/x2/Rabbit_Down@2x.png"];
 
 function PetPage() {
   const [show, setShow] = useState(false);
@@ -52,17 +45,11 @@ function PetPage() {
         <Button className="button-card" onClick={openModal}>
           Choose Your Pet
         </Button>
-        <PetGame />
+        {/*<PetGame />*/}
 
         {/* <Button className="jump-button">Wanna See Me Jump?</Button> */}
 
-        <input
-          type="range"
-          min="-125"
-          max="40"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
+        <input type="range" min="-125" max="40" value={value} onChange={(e) => setValue(e.target.value)} />
 
         <Modal show={show} className="pet-modal">
           <Modal.Header
@@ -78,12 +65,7 @@ function PetPage() {
           >
             Welcome To The Pet Store
           </Modal.Header>
-          <PetPicker
-            selected={selectedPet}
-            setSelected={setSelectedPet}
-            imgs={imgs}
-            handlePetSelection={handlePetSelection}
-          />
+          <PetPicker selected={selectedPet} setSelected={setSelectedPet} imgs={imgs} handlePetSelection={handlePetSelection} />
           <Button onClick={handlePetSelection} className="handle-pet-btn">
             Choose
           </Button>
@@ -109,28 +91,11 @@ function PetPage() {
           <GravePicker />
         </Modal>
         <div className="pet-dec-card">
-          <img
-            className="foodBowl"
-            alt="food bowl"
-            src="/accessories/foodbowl.png"
-          />
+          <img className="foodBowl" alt="food bowl" src="/accessories/foodbowl.png" />
 
-          <img
-            className="waterBowl"
-            alt="water bowl"
-            src="/accessories/waterbowl.png"
-          />
-          <motion.img
-            animate={{ x: value * 8 + "px" }}
-            className="petty"
-            alt="pet"
-            src={selectedPet}
-          />
-          <img
-            className="petHouse"
-            alt="pet house"
-            src="/accessories/pethouse.png"
-          />
+          <img className="waterBowl" alt="water bowl" src="/accessories/waterbowl.png" />
+          <motion.img animate={{ x: value * 8 + "px" }} className="petty" alt="pet" src={selectedPet} />
+          <img className="petHouse" alt="pet house" src="/accessories/pethouse.png" />
         </div>
         <div className="graveyard-holder"></div>
       </div>
