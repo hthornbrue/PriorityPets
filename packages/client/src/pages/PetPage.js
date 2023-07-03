@@ -3,7 +3,6 @@ import PetPicker from "../components/PetPicker";
 import "./PetPage.css";
 import { Modal, Button } from "react-bootstrap";
 import GravePicker from "../components/GravePicker";
-import PetGame from "../components/PetGame";
 import NavBar from "../components/Navbar.js";
 import { motion } from "framer-motion";
 //import PetGame from "../components/PetGame";
@@ -93,6 +92,7 @@ function PetPage() {
         </Modal>
         <div className="pet-dec-card">
           <img className="foodBowl" alt="food bowl" src="/accessories/foodbowl.png" />
+
           <img className="waterBowl" alt="water bowl" src="/accessories/waterbowl.png" />
           <motion.img animate={{ x: value * 8 + "px" }} className="petty" alt="pet" src={selectedPet} />
           <img className="petHouse" alt="pet house" src="/accessories/pethouse.png" />

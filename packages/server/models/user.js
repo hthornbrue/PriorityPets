@@ -14,7 +14,6 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
       match: keys.constants.email_regex,
-
     },
     passwordHash: {
       type: String,
