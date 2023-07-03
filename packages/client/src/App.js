@@ -22,7 +22,6 @@ function App() {
           {/* Potentially bugged but I haven't run into one yet. */}
           <Route path="/PetPage" element={<PetPage />} />
           <Route path="/TaskPage" element={<TaskPage />} />
-          <Route path="/PetGame" element={<PetGame />} />
         </Route>
       </Routes>
     </>

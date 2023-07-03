@@ -5,6 +5,7 @@ import { Modal, Button } from "react-bootstrap";
 import GravePicker from "../components/GravePicker";
 import NavBar from "../components/Navbar.js";
 import { motion } from "framer-motion";
+import PetGame from "../components/PetGame";
 
 const imgs = [
   "/x2/Cat_Down@2x.png",
@@ -51,6 +52,7 @@ function PetPage() {
         <Button className="button-card" onClick={openModal}>
           Choose Your Pet
         </Button>
+        <PetGame />
 
         {/* <Button className="jump-button">Wanna See Me Jump?</Button> */}
 

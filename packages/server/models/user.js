@@ -36,6 +36,7 @@ const userSchema = new mongoose.Schema(
     pets: {
       currentPet: {
         type: ObjectId,
+        default: undefined,
         ref: "Pet",
       },
       deceasedPets: [
