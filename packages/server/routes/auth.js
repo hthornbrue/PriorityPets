@@ -41,10 +41,9 @@ router.post("/signup", async (req, res, next) => {
 router.post("/signin", async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    console.log(email);
 
     let user = await User.findOne({ email: email });
-    console.log(user);
+
     if (!user) {
       return res.status(401).json({
         message: "Authentication error",
@@ -67,16 +66,13 @@ router.post("/signin", async (req, res, next) => {
     const accessToken = jwt.sign({ sub: email }, keys.auth.accessTokenSecret, {
       expiresIn: keys.auth.accessTokenExp,
     });
-    //const refreshToken = jwt.sign({ sub: user._id }, keys.auth.refreshTokenSecret, { expiresIn: keys.auth.refreshTokenExp });
-
-    //user.refreshTokens = [...user.refreshTokens, refreshToken];
 
     await user.save();
 
     user = user.toJSON();
     delete user.passwordHash;
 
-    res.json({ token: accessToken, user }); //res.cookie(keys.auth.cookieName, refreshToken, keys.auth.cookieOptions).json({ token: accessToken, user });
+    res.json({ token: accessToken, user });
   } catch (error) {
     next(error);
   }

@@ -4,14 +4,17 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-// import AuthProvider from "./contexts/authContext";
+import AuthProvider from "./contexts/authContext";
+import PetProvider from "./contexts/petContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    {/* <AuthProvider> */}
-      <App />
-    {/* </AuthProvider> */}
+    <AuthProvider>
+      <PetProvider>
+        <App />
+      </PetProvider>
+    </AuthProvider>
   </BrowserRouter>
 );
 

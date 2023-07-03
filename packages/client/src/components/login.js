@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import useAuth from "../hooks/useAuth";
 
-const Login = ({ showModal, handleCloseModal }) => {
+const Login = ({ showModal, handleCloseModal, onError }) => {
   const [data, setData] = useState({ email: "", password: "" });
   const { signIn } = useAuth();
 
@@ -14,7 +14,7 @@ const Login = ({ showModal, handleCloseModal }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    signIn(data.email, data.password);
+    signIn(data.email, data.password, onError);
   };
 
   return (
