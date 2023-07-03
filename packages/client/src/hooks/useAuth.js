@@ -14,7 +14,6 @@ const useAuth = () => {
         console.log(response.data);
       })
       .catch((error) => {
-        //console.log(error);
         onError(error);
       });
   };
@@ -32,20 +31,19 @@ const useAuth = () => {
           navigate("/TaskPage");
         })
         .catch((error) => {
-          // console.log(error);
           onError(error);
         });
     }
   };
-}
-//   const signOut = () => {};
 
-//   return {
-//     auth,
-//     signUp,
-//     signIn,
-//     signOut,
-//   };
-// };
+  const signOut = () => {};
+
+  return {
+    auth,
+    signUp,
+    signIn,
+    signOut,
+  };
+};
 
 export default useAuth;
