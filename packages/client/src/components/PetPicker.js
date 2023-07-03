@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./PetPicker.css";
-import axios from "axios";
+import axios from "../util/axiosConfig";
 import { Container, Form } from "react-bootstrap";
 
 const imgs = [

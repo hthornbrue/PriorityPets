@@ -4,7 +4,7 @@ import "./PetPage.css";
 import { Modal, Button } from "react-bootstrap";
 import GravePicker from "../components/GravePicker";
 import NavBar from "../components/Navbar.js";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 
 const imgs = [
   "/x2/Cat_Down@2x.png",
@@ -20,6 +20,7 @@ function PetPage() {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(0);
   const [selectedPet, setSelectedPet] = useState(imgs[0]);
+  const [isActivated, setIsActivated] = useState(false);
 
   const openModal = (e) => {
     e.preventDefault();
@@ -43,6 +44,10 @@ function PetPage() {
     setShow(false);
   };
 
+  const handleButtonClick = () => {
+    setIsActivated(!isActivated);
+  };
+
   return (
     <>
       <div className="main-background-div">
@@ -52,15 +57,17 @@ function PetPage() {
           Choose Your Pet
         </Button>
 
-        {/* <Button className="jump-button">Wanna See Me Jump?</Button> */}
+        <Button className="jump-button" onClick={handleButtonClick}>
+          Wanna See Me Jump?
+        </Button>
 
-        <input
+        {/* <input
           type="range"
           min="-125"
           max="40"
           value={value}
           onChange={(e) => setValue(e.target.value)}
-        />
+        /> */}
 
         <Modal show={show} className="pet-modal">
           <Modal.Header
@@ -120,7 +127,7 @@ function PetPage() {
           />
           <motion.img
             animate={{ x: value * 8 + "px" }}
-            className="petty"
+            className={isActivated ? "petty-move" : "petty"}
             alt="pet"
             src={selectedPet}
           />

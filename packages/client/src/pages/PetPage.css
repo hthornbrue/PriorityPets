@@ -27,7 +27,10 @@
   animation-play-state: paused;
 }
 
-.petty:hover {
+.petty-move {
+  animation: slide 6.6s linear infinite;
+  margin-top: 80px;
+  width: 150px;
   animation-play-state: running;
 }
 
@@ -47,7 +50,7 @@
   position: relative;
   font-size: larger;
   top: 110px;
-  right: 240px;
+  right: 110px;
   background-color: black;
   border: 1px black solid;
   border-radius: 15px;
@@ -135,6 +138,13 @@ input {
   left: 250px;
   top: 400px;
 }
+
+.jump-button:hover {
+  background-color: darkblue;
+  box-shadow: 0 0 0 1px darkblue;
+}
+
+
 
 @media (min-width: 1920px) {
   .pet-dec-card {
