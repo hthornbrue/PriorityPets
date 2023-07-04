@@ -49,10 +49,11 @@ function TaskManagement() {
     };
 
     setTasks([...tasks, newTask]);
-
+console.log(tasks)
+console.log({...newTask})
     //put axios logic here
     axios
-      .post("/tasks", newTask)
+      .post("/", {...newTask})
       .then((response) => {
         console.log(response.data);
       })
