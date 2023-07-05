@@ -50,7 +50,7 @@ function TaskManagement() {
 
     setTasks([...tasks, newTask]);
 console.log(tasks)
-console.log({...newTask})
+console.log({newTask: name})
     //put axios logic here
     axios
       .post("/", {...newTask})
