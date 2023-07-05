@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import "./PetPicker.css";
-import axios from "axios";
+import axios from "../util/axiosConfig";
 import { petContext } from "../contexts/petContext";
 
 const imgs = [

@@ -1,6 +1,6 @@
 // PetGame.js
 import React, { useContext } from "react";
-import axios from "axios";
+import axios from "../util/axiosConfig";
 import { petContext } from "../contexts/petContext";
 import { authContext } from "../contexts/authContext.js"; 
 
