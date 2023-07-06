@@ -6,12 +6,12 @@ import { authContext } from "../contexts/authContext";
 
 function TaskPage() {
   const { auth, setAuth } = useContext(authContext);
-
+console.log(auth)
   return (
     <div className="mainTaskDiv" >
       <NavBar />
       <h1 style={{ color: "white", fontWeight: "bold", fontSize: "60px" }}>User's Priorities</h1>
-      <TaskManagement />
+      <TaskManagement userEmail={auth.user.email} />
     </div>
   );
 }
