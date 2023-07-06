@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { petContext } from "../contexts/petContext";
 import useAuth from "../hooks/useAuth";
+import axios from "../util/axiosConfig";
 
 const usePet = () => {
   const { auth } = useAuth();
@@ -8,12 +9,12 @@ const usePet = () => {
 
   const getPet = async (onError) => {
     if (Object.keys(auth.pets.currentpet).length !== 0) {
-      api
+      axios
         .get(`/pet/${auth.pets.currentpet}`)
         .then((response) => {
           const { currentPet } = response.data;
 
-          setPet({ isAuthenticated: true, user: user });
+          setPet({ isAuthenticated: true, auth: auth });
         })
         .catch((error) => {
           // console.log(error);

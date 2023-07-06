@@ -19,27 +19,33 @@ router.get("/:id", async (request, response) => {
   }
 });
 
-router.post("/:id", async (request, response) => {
-  const id = request.params.id;
-  const { user, name, appearance, healthLevel } = request.body;
+router.post("/", async (request, response) => {
+  // const id = request.params.id;
+  // const { user, name, appearance, healthLevel } = request.body;
 
-  try {
-    const updatedPet = await Pet.findByIdAndUpdate(
-      id,
-      { user, name, appearance, healthLevel },
-      {
-        new: true,
-      }
-    ).exec();
+  // try {
+  //   const updatedPet = await Pet.findByIdAndUpdate(
+  //     id,
+  //     { user, name, appearance, healthLevel },
+  //     {
+  //       new: true,
+  //     }
+  //   ).exec();
 
-    if (updatedPet) {
-      response.json(updatedPet);
-    } else {
-      response.status(404).json({ error: "Pet not found." });
-    }
-  } catch (error) {
-    response.status(500).json({ error: "An error occurred when updating the pet." });
-  }
+  //   if (updatedPet) {
+  //     response.json(updatedPet);
+  //   } else {
+  //     response.status(404).json({ error: "Pet not found." });
+  //   }
+  // } catch (error) {
+  //   response.status(500).json({ error: "An error occurred when updating the pet." });
+  // }
+
+
+  response.json("updatedPet")
+
+
+
 });
 
 router.post("/heal/:id", async (request, response) => {
