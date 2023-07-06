@@ -1,16 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import PetPicker from "../components/PetPicker";
 import "./PetPage.css";
 import { Modal, Button } from "react-bootstrap";
 import GravePicker from "../components/GravePicker";
 import NavBar from "../components/Navbar.js";
 import { motion } from "framer-motion";
-import axios from "../util/axiosConfig";
-import { petContext } from "../contexts/petContext";
-import useAuth from "../hooks/useAuth";
+//import PetGame from "../components/PetGame";
 
 const imgs = ["/x2/Cat_Down@2x.png", "/x2/Chick_Down@2x.png", "/x2/Fox_Down@2x.png", "/x2/Mouse_Down@2x.png", "/x2/Pig_Down@2x.png", "/x2/Rabbit_Down@2x.png"];
-
 
 function PetPage() {
   const [show, setShow] = useState(false);
@@ -18,14 +15,6 @@ function PetPage() {
   const [value, setValue] = useState(0);
   const [selectedPet, setSelectedPet] = useState(imgs[0]);
   const [isActivated, setIsActivated] = useState(false);
-  const { auth } = useAuth();
-  const { pet,setPet } = useContext(petContext);
-  const [formData, setFormData] = useState({
-    name: "",
-    appearance: "",
-    user: auth.id,
-  });
-
 
   const openModal = (e) => {
     e.preventDefault();
@@ -45,17 +34,8 @@ function PetPage() {
     setOpen(false);
   };
 
-  const handlePetSelection = async (event) => {
-
+  const handlePetSelection = (event) => {
     setShow(false);
-
-    try {
-      const response = await axios.post("pets/", formData);
-      console.log("Updated pet:", response.data);
-      setPet(response.data.pet);
-    } catch (error) {
-      console.log("Error occurred while updating the pet:", error);
-    }
   };
 
   const handleButtonClick = () => {
@@ -98,7 +78,7 @@ function PetPage() {
           >
             Welcome To The Pet Store
           </Modal.Header>
-          <PetPicker selected={selectedPet} formData={formData} setFormData = {setFormData} setSelected={setSelectedPet} imgs={imgs} handlePetSelection={handlePetSelection} />
+          <PetPicker selected={selectedPet} setSelected={setSelectedPet} imgs={imgs} handlePetSelection={handlePetSelection} />
           <Button onClick={handlePetSelection} className="handle-pet-btn">
             Choose
           </Button>
