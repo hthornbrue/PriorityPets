@@ -25,14 +25,14 @@ function PetPage() {
   const [isActivated, setIsActivated] = useState(false);
   const { auth } = useAuth();
   const [selectedPet, setSelectedPet] = useState(imgs[0]);
-  const [petName, setPetName] = useState("");
-  const [petApperance, setPetApperance] = useState("");
-  const { pet, setPet } = useContext(petContext);
+    const { pet, setPet } = useContext(petContext);
   const [formData, setFormData] = useState({
     name: "",
     appearance: "",
     userId: auth.user._id,
   });
+
+  console.log(formData);
 
   const openModal = (e) => {
     e.preventDefault();
@@ -53,11 +53,9 @@ function PetPage() {
   };
 
   const handlePetSelection = async (event) => {
-    setPetApperance(formData.appearance)
-    setPetName(formData.name)
     setFormData({
-      name: petName,
-      appearance: petApperance,
+      name: formData.name,
+      appearance: formData.appearance,
       userId: auth.user._id,
     });
     console.log(formData);
@@ -113,11 +111,7 @@ function PetPage() {
           </Modal.Header>
           <PetPicker
             selected={selectedPet}
-            petApperance={petApperance}
-            petName={petName}
-            setPetApperance={setPetApperance}
             setSelectedPet={setSelectedPet}
-            setPetName={setPetName}
             formData={formData}
             setFormData={setFormData}
             imgs={imgs}
