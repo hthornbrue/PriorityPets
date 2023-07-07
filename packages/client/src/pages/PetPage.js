@@ -53,14 +53,15 @@ function PetPage() {
   };
 
   const handlePetSelection = async (event) => {
+    setPetApperance(formData.appearance)
+    setPetName(formData.name)
     setFormData({
       name: petName,
       appearance: petApperance,
       userId: auth.user._id,
     });
-    setShow(false);
     console.log(formData);
-    console.log(auth.user._id);
+    setShow(false);
     try {
       const response = await axios.post("pets/", formData);
       console.log("Updated pet:", response.data);

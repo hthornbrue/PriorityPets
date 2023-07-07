@@ -12,23 +12,24 @@ const imgs = [
   "/x2/Rabbit_Down@2x.png",
 ];
 
-const PetPicker = ({ petName,setPetApperance,setPetName, selected, setSelectedPet }) => {
+const PetPicker = ({ petName,setPetApperance,setPetName, selected,formData,setFormData, setSelectedPet }) => {
   const { pet, setPet } = useContext(petContext);
-  const [formData, setFormData] = useState({
-    name: "",
-    appearance: "",
-    healthLevel: 100,
-  }); 
+  // const [formData, setFormData] = useState({
+  //   name: "",
+  //   appearance: "",
+  //   healthLevel: 100,
+  // }); 
+
+  
 
   const handlePetSelection = (pet) => {
     setSelectedPet(pet);
-    console.log(pet);
     setPetApperance(pet)
     setFormData({ ...formData, appearance: pet });
   };
   
   const handleNameChange = (e) => {
-    setPetName(e.target.value);
+    setPetName(e.target.value)
   };
 
 
