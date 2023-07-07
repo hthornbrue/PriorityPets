@@ -62,11 +62,7 @@ function PetPage() {
     console.log(formData);
     console.log(auth.user._id);
     try {
-      const response = await axios.post("pets/", {
-        name: "kinggeorge",
-        appearance: "/x2/Pig_Down@2x.png",
-        userId: auth.user._id,
-      }); //formData);
+      const response = await axios.post("pets/", formData);
       console.log("Updated pet:", response.data);
       //  setPet(response.data.pet);
     } catch (error) {
