@@ -12,26 +12,25 @@ const imgs = [
   "/x2/Rabbit_Down@2x.png",
 ];
 
-const PetPicker = ({ selected, setSelected }) => {
-  const { setPet } = useContext(petContext);
+const PetPicker = ({ petName,setPetApperance,setPetName, selected, setSelectedPet }) => {
+  const { pet, setPet } = useContext(petContext);
   const [formData, setFormData] = useState({
     name: "",
     appearance: "",
     healthLevel: 100,
-  });
+  }); 
 
-  const handlePetSelection = async (pet) => {
-    setSelected(pet);
+  const handlePetSelection = (pet) => {
+    setSelectedPet(pet);
+    console.log(pet);
+    setPetApperance(pet)
     setFormData({ ...formData, appearance: pet });
-
-    try {
-      const response = await axios.post(`/pets/${pet}`, formData);
-      console.log("Updated pet:", response.data);
-      setPet(response.data); 
-    } catch (error) {
-      console.log("Error occurred while updating the pet:", error);
-    }
   };
+  
+  const handleNameChange = (e) => {
+    setPetName(e.target.value);
+  };
+
 
   return (
     <div>
@@ -46,6 +45,15 @@ const PetPicker = ({ selected, setSelected }) => {
             onClick={() => handlePetSelection(pet)}
           />
         ))}
+      </div>
+      <div>
+        <label htmlFor="petName">Pet Name:</label>
+        <input
+          type="text"
+          id="petName"
+          value={petName}
+          onChange={handleNameChange}
+        />
       </div>
     </div>
   );

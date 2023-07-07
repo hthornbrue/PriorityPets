@@ -1,20 +1,38 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import PetPicker from "../components/PetPicker";
 import "./PetPage.css";
 import { Modal, Button } from "react-bootstrap";
 import GravePicker from "../components/GravePicker";
 import NavBar from "../components/Navbar.js";
 import { motion } from "framer-motion";
-//import PetGame from "../components/PetGame";
+import axios from "../util/axiosConfig";
+import { petContext } from "../contexts/petContext";
+import useAuth from "../hooks/useAuth";
 
-const imgs = ["/x2/Cat_Down@2x.png", "/x2/Chick_Down@2x.png", "/x2/Fox_Down@2x.png", "/x2/Mouse_Down@2x.png", "/x2/Pig_Down@2x.png", "/x2/Rabbit_Down@2x.png"];
+const imgs = [
+  "/x2/Cat_Down@2x.png",
+  "/x2/Chick_Down@2x.png",
+  "/x2/Fox_Down@2x.png",
+  "/x2/Mouse_Down@2x.png",
+  "/x2/Pig_Down@2x.png",
+  "/x2/Rabbit_Down@2x.png",
+];
 
 function PetPage() {
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(0);
-  const [selectedPet, setSelectedPet] = useState(imgs[0]);
   const [isActivated, setIsActivated] = useState(false);
+  const { auth } = useAuth();
+  const [selectedPet, setSelectedPet] = useState(imgs[0]);
+  const [petName, setPetName] = useState("");
+  const [petApperance, setPetApperance] = useState("");
+  const { pet, setPet } = useContext(petContext);
+  const [formData, setFormData] = useState({
+    name: "",
+    appearance: "",
+    userId: auth.user._id,
+  });
 
   const openModal = (e) => {
     e.preventDefault();
@@ -34,11 +52,30 @@ function PetPage() {
     setOpen(false);
   };
 
-  const handlePetSelection = (event) => {
+  const handlePetSelection = async (event) => {
+    setFormData({
+      name: petName,
+      appearance: petApperance,
+      userId: auth.user._id,
+    });
     setShow(false);
+    console.log(formData);
+    console.log(auth.user._id);
+    try {
+      const response = await axios.post("pets/", {
+        name: "kinggeorge",
+        appearance: "/x2/Pig_Down@2x.png",
+        userId: auth.user._id,
+      }); //formData);
+      console.log("Updated pet:", response.data);
+      //  setPet(response.data.pet);
+    } catch (error) {
+      console.log("Error occurred while updating the pet:", error);
+    }
   };
 
   const handleButtonClick = () => {
+    handlePetSelection();
     setIsActivated(!isActivated);
   };
 
@@ -50,7 +87,6 @@ function PetPage() {
         <Button className="button-card" onClick={openModal}>
           Choose Your Pet
         </Button>
-        {/*<PetGame />*/}
 
         <Button className="jump-button" onClick={handleButtonClick}>
           Wanna See Me Jump?
@@ -78,7 +114,18 @@ function PetPage() {
           >
             Welcome To The Pet Store
           </Modal.Header>
-          <PetPicker selected={selectedPet} setSelected={setSelectedPet} imgs={imgs} handlePetSelection={handlePetSelection} />
+          <PetPicker
+            selected={selectedPet}
+            petApperance={petApperance}
+            petName={petName}
+            setPetApperance={setPetApperance}
+            setSelectedPet={setSelectedPet}
+            setPetName={setPetName}
+            formData={formData}
+            setFormData={setFormData}
+            imgs={imgs}
+            handlePetSelection={handlePetSelection}
+          />
           <Button onClick={handlePetSelection} className="handle-pet-btn">
             Choose
           </Button>
@@ -104,7 +151,11 @@ function PetPage() {
           <GravePicker />
         </Modal>
         <div className="pet-dec-card">
-          <img className="foodBowl" alt="food bowl" src="/accessories/foodbowl.png" />
+          <img
+            className="foodBowl"
+            alt="food bowl"
+            src="/accessories/foodbowl.png"
+          />
 
           <img
             className="waterBowl"

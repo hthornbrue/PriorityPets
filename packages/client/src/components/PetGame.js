@@ -1,4 +1,3 @@
-// PetGame.js
 import React, { useContext } from "react";
 import axios from "../util/axiosConfig";
 import { petContext } from "../contexts/petContext";
