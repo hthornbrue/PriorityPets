@@ -25,14 +25,12 @@ function PetPage() {
   const [isActivated, setIsActivated] = useState(false);
   const { auth } = useAuth();
   const [selectedPet, setSelectedPet] = useState(imgs[0]);
-    const { pet, setPet } = useContext(petContext);
+  const { pet, setPet } = useContext(petContext);
   const [formData, setFormData] = useState({
     name: "",
     appearance: "",
     userId: auth.user._id,
   });
-
-  console.log(formData);
 
   const openModal = (e) => {
     e.preventDefault();
@@ -58,7 +56,7 @@ function PetPage() {
       appearance: formData.appearance,
       userId: auth.user._id,
     });
-    console.log(formData);
+    // console.log(formData);
     setShow(false);
     try {
       const response = await axios.post("pets/", formData);

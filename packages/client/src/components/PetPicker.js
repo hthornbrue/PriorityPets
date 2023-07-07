@@ -12,19 +12,17 @@ const imgs = [
   "/x2/Rabbit_Down@2x.png",
 ];
 
-const PetPicker = ({ selected,formData,setFormData, setSelectedPet }) => {
-
+const PetPicker = ({ selected, formData, setFormData, setSelectedPet }) => {
   const handlePetSelection = (pet) => {
     setSelectedPet(pet);
     setFormData({ ...formData, appearance: pet });
   };
-  
+
   const handleNameChange = (e) => {
     // console.log(e.target.value);
-    let name = e.target.value
-    setFormData({...formData, name: name })
+    let name = e.target.value;
+    setFormData({ ...formData, name: name });
   };
-
 
   return (
     <div>
@@ -42,11 +40,7 @@ const PetPicker = ({ selected,formData,setFormData, setSelectedPet }) => {
       </div>
       <div>
         <label htmlFor="petName">Pet Name:</label>
-        <input
-          type="text"
-          id="petName"
-          onChange={handleNameChange}
-        />
+        <input type="text" id="petName" onChange={handleNameChange} />
       </div>
     </div>
   );
