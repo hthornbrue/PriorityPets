@@ -7,7 +7,7 @@ router.get("/", async (request, response) => {
   try {
     console.log("GET /api/tasks");
     console.log(request.query)
-    const result = await User.findOne({email:request.query.userEmail}).populate("tasks").exec();
+    const result = await User.findOne({email: request.query.userEmail}).populate("tasks").exec();
     console.log(result)
     response.json(result.tasks);
   } catch (error) {
@@ -37,11 +37,13 @@ router.post("/", async (request, response) => {
     completed,
     reminder,
     // user: user._id,
-    user: user,
+    user: user._id,
   });
 
   try {
-    await newTask.save();
+    // await newTask.save();
+    const taskData = await newTask.save();
+    await User.findOneAndUpdate({ email: userEmail }, { $push: { tasks: taskData._id } })
     response.json(newTask);
   } catch (error) {
     console.log(error)
