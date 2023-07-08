@@ -1,5 +1,6 @@
 const express = require("express");
 const { Pet } = require("../models");
+const { User } = require("../models")
 
 const router = express.Router();
 
@@ -57,6 +58,26 @@ router.post("/heal/:id", async (request, response) => {
     }
   } catch (error) {
     response.status(500).json({ error: "An error occurred when healing the pet." });
+  }
+});
+
+router.post("/", async (request, response) => {
+  
+  const {name, appearance, userId} = request.body;
+    console.log(request.body);
+  try {
+    const newPet = new Pet({name, appearance, user: userId})
+    await newPet.save()
+    console.log(newPet);
+    const user = await User.findById(userId)
+    user.pets.currentPet = newPet._id 
+    await user.save()
+    console.log("two", user);
+
+    response.status(201).json({ message: "Pet created successfully" });
+  }  
+  catch (error) {
+    response.status(500).json({ error: "An error occurred when updating the pet." });
   }
 });
 

@@ -7,7 +7,7 @@ const useAuth = () => {
   const { auth, setAuth } = useContext(authContext);
   const navigate = useNavigate();
 
-  const signUp = async (email, username, password, confirmPassword, onError) => {
+  const signUp = async (email, username, password, onError) => {
     api
       .post("/auth/signup", { email, username, password })
       .then((response) => {

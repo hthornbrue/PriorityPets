@@ -15,7 +15,7 @@ const Signup = ({ showModal, handleCloseModal, onError }) => {
   const handleSignup = (e) => {
     e.preventDefault();
 
-    signUp(data.email, data.password, data.confirmPassword, onError);
+    signUp(data.email, data.username, data.password, onError);
   };
 
   return (

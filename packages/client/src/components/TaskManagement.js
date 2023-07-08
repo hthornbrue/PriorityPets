@@ -51,8 +51,6 @@ function TaskManagement({ userEmail }) {
       userEmail,  // Add userEmail to the new task
     };
 
- 
-
     // Put axios logic here
     axios
       .post("http://localhost:3001/api/tasks", newTask)

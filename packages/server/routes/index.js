@@ -15,6 +15,5 @@ router.use("/users", userRouter);
 router.use("/tasks", taskRouter); // Use the task routes with the '/api/tasks' prefix
 router.use("/pets", petRouter);
 
-console.log(listEndpoints(router));
+export default router;   
 
-export default router;

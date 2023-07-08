@@ -6,7 +6,6 @@ import { authContext } from "../contexts/authContext";
 
 function TaskPage() {
   const { auth, setAuth } = useContext(authContext);
-console.log(auth)
   return (
     <div className="mainTaskDiv" >
       <NavBar />
