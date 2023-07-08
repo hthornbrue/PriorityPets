@@ -47,7 +47,7 @@ router.post("/", async (request, response) => {
     response.json(newTask);
   } catch (error) {
     console.log(error)
-    response.status(500).json({ error: "An error occurred when creating the task." });
+    response.status(500).json({ error: "An error occurred when creating your task." });
   }
 });
 
